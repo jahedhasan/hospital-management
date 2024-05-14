@@ -502,9 +502,9 @@ X-ray -->
     
     
     <!--  ************************* Gallery Starts Here ************************** -->
-    <div class="photo-gallery">
+    <div class="photo-gallery" >
         <div class="container center">
-            <h1 class="heading">Our <span>Gallery</span>  </h1>   
+            <h1 class="heading py-5">Our <span>Gallery</span>  </h1>   
             <div class="row photos">
                 <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_01.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_01.jpg"></a></div>
                 <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_02.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_02.jpg"></a></div>
