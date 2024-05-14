@@ -3,13 +3,13 @@
 include_once('hms/include/config.php');
 if(isset($_POST['submit']))
 {
-$name=$_POST['fullname'];
-$email=$_POST['emailid'];
-$mobileno=$_POST['mobileno'];
-$dscrption=$_POST['description'];
-$query=mysqli_query($con,"insert into tblcontactus(fullname,email,contactno,message) value('$name','$email','$mobileno','$dscrption')");
-echo "<script>alert('Your information succesfully submitted');</script>";
-echo "<script>window.location.href ='index.php'</script>";
+    $name=$_POST['fullname'];
+    $email=$_POST['emailid'];
+    $mobileno=$_POST['mobileno'];
+    $dscrption=$_POST['description'];
+    $query=mysqli_query($con,"insert into tblcontactus(fullname,email,contactno,message) value('$name','$email','$mobileno','$dscrption')");
+    echo "<script>alert('Your information succesfully submitted');</script>";
+    echo "<script>window.location.href ='index.php'</script>";
 
 } ?>
 <!doctype html>
@@ -23,17 +23,18 @@ echo "<script>window.location.href ='index.php'</script>";
     <link rel="shortcut icon" href="assets/images/fav.jpg">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
-     <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="newassets/css/style.css">
 </head>
 
-    <body>
+<body>
 
-       <header class="header">
+ <header class="header">
 
     <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> Feni <strong>MEDINOVA</strong> Hospital </a>
 
@@ -50,7 +51,7 @@ echo "<script>window.location.href ='index.php'</script>";
 
 </header> 
 
-    <!-- ################# Header Starts Here#######################--->
+<!-- ################# Header Starts Here#######################--->
      <!--  <header id="menu-jk">
         <div id="nav-head" class="header-nav">
             <div class="container">
@@ -75,60 +76,60 @@ echo "<script>window.location.href ='index.php'</script>";
             </div>
         </div>
     </header>    -->
-     <!-- ################# Slider Starts Here#######################--->
+    <!-- ################# Slider Starts Here#######################--->
     <div class="slider-detail mt-0">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item ">
-                <img class="d-block w-100" src="assets/images/slider/h1.jpeg" alt="First slide">
-                <div class="carousel-cover"></div>
-                <div class="carousel-caption vdg-cur d-none d-md-block">
-                    <h5 class="animated bounceInDown">Feni Medinova Specialized Hospital </h5>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item ">
+                    <img class="d-block w-100" src="assets/images/slider/h1.jpeg" alt="First slide">
+                    <div class="carousel-cover"></div>
+                    <div class="carousel-caption vdg-cur d-none d-md-block">
+                        <h5 class="animated bounceInDown">Feni Medinova Specialized Hospital </h5>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/images/slider/H2.jpg" alt="Second slide">
-                <div class="carousel-cover"></div>
-                <div class="carousel-caption vdg-cur d-none d-md-block">
-                    <h5 class="animated bounceInDown">we provide quality service</h5>
-                </div>
-            </div>
 
-            <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/slider/H3.jpg" alt="Third slide">
-                <div class="carousel-cover"></div>
-                <div class="carousel-caption vdg-cur d-none d-md-block">
-                    <h5 class="animated bounceInDown">we provide quality service</h5>
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="assets/images/slider/H2.jpg" alt="Second slide">
+                    <div class="carousel-cover"></div>
+                    <div class="carousel-caption vdg-cur d-none d-md-block">
+                        <h5 class="animated bounceInDown">we provide quality service</h5>
+                    </div>
                 </div>
-            </div>
 
-            <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/slider/H4.jpg" alt="Fourth slide">
-                <div class="carousel-cover"></div>
-                <div class="carousel-caption vdg-cur d-none d-md-block">
-                    <h5 class="animated bounceInDown">we provide quality service</h5>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/images/slider/H3.jpg" alt="Third slide">
+                    <div class="carousel-cover"></div>
+                    <div class="carousel-caption vdg-cur d-none d-md-block">
+                        <h5 class="animated bounceInDown">we provide quality service</h5>
+                    </div>
                 </div>
-            </div>    
+
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/images/slider/H4.jpg" alt="Fourth slide">
+                    <div class="carousel-cover"></div>
+                    <div class="carousel-caption vdg-cur d-none d-md-block">
+                        <h5 class="animated bounceInDown">we provide quality service</h5>
+                    </div>
+                </div>    
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
-</div>
 
-<!-- ======= Suscribe Section ======= -->
+    <!-- ======= Suscribe Section ======= -->
     <div class="suscribe-area" style="margin-top:15px;">
       <div class="container">
         <div class="row">
@@ -137,11 +138,11 @@ echo "<script>window.location.href ='index.php'</script>";
               <h3>CALL FOR DOCTOR APPOINTMENT</h3>
               <a class="sus-btn" href="tel:01842101211"><i class="fa fa-phone" ></i> 01842-101211</a> 
               <a class="sus-btn" href="tel:01842101211"><i class="fa fa-phone" ></i> 01842-101211</a>
-            </div>
           </div>
-        </div>
       </div>
-    </div><!-- End Suscribe Section -->
+  </div>
+</div>
+</div><!-- End Suscribe Section -->
 <!-- about section starts  -->
 
 <section class="about" id="about">
@@ -166,9 +167,9 @@ echo "<script>window.location.href ='index.php'</script>";
 </section>
 
 <!-- about section ends -->
-    
-  <!--  ************************* Logins ************************** -->
-        
+
+<!--  ************************* Logins ************************** -->
+
    <!--   <section id="logins" class="our-blog container-fluid">
         <div class="container">
         <div class="inner-title">
@@ -226,6 +227,18 @@ echo "<script>window.location.href ='index.php'</script>";
     </section>   -->
 
     <!-- ################# Our Departments Starts Here#######################--->
+<!--     
+CCU
+HDU 
+NICU 
+dialysis 
+MRI
+Pathology 
+Dental Unit 
+OT
+Digital LAB 
+Pharmacy 
+X-ray -->
 
 <section id="services" class="key-features department" style="margin-top: -50px">
     <div class="container">
@@ -239,84 +252,101 @@ echo "<script>window.location.href ='index.php'</script>";
             <!-- Existing key features -->
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
-                    <i class="fas fa-heart"></i>
-                    <h5>Cardiology</h5>
+                    <i class="fas"><img src="assets/icon/icu.png" height="45px" width="45px" /></i>
+                    <h5>CCU</h5>
                     <p>Specialized care for heart-related issues.</p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
-                    <i class="fas fa-bone"></i>
-                    <h5>Orthopaedic</h5>
+                    <i class="fas fa-heartbeat"></i>
+                    <h5>HDU</h5>
                     <p>Comprehensive orthopedic services for bone health.</p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
-                   <i class="fas fa-brain"></i>
-                    <h5>Neurology</h5>
-                    <p>Expert care for neurological disorders.</p>
-                </div>
-            </div>
+                 <i class="fa"><img src="assets/icon/monitor.png" height="45px" width="45px" /></i>
+                 <h5>NICU</h5>
+                 <p>Expert care for neurological disorders.</p>
+             </div>
+         </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="single-key">
-                    <i class="fas fa-pills"></i>
-                    <h5>Pharma Pipeline</h5>
-                    <p>Innovative pharmaceutical developments.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="single-key">
-                    <i class="fas fa-user-md"></i>
-                    <h5>Pharma Team</h5>
-                    <p>Collaborative team dedicated to pharmaceutical advancements.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="single-key">
-                    <i class="fas fa-medkit"></i>
-                    <h5>High-Quality Treatments</h5>
-                    <p>Providing top-notch medical treatments for your well-being.</p>
-                </div>
-            </div>
-
-            <!-- Additional key features -->
-            <div class="col-lg-4 col-md-6">
-                <div class="single-key">
-                    <i class="fas fa-dna"></i>
-                    <h5>Genetics</h5>
-                    <p>Exploring genetic solutions for personalized healthcare.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="single-key">
-                    <i class="fas fa-tooth"></i>
-                    <h5>Dentistry</h5>
-                    <p>Comprehensive dental care for a healthy smile.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="single-key">
-                   <i class="fas fa-microscope"></i>
-                    <h5>Research & Development</h5>
-                    <p>Advancing healthcare through cutting-edge research.</p>
-                </div>
+         <div class="col-lg-4 col-md-6">
+            <div class="single-key">
+                <!-- <i class="fas fa-pills"></i> -->
+                <i class="fas"><img src="assets/icon/dialysis.png" height="45px" width="45px" /></i>
+                <h5>Dialysis</h5>
+                <p>Innovative pharmaceutical developments.</p>
             </div>
         </div>
-    </div>
+
+
+        <div class="col-lg-4 col-md-6">
+            <div class="single-key">
+                <i class="fas fa-medkit"></i>
+                <h5>MRI</h5>
+                <p>Providing top-notch medical treatments for your well-being.</p>
+            </div>
+        </div>
+
+        <!-- Additional key features -->
+        <div class="col-lg-4 col-md-6">
+            <div class="single-key">
+                <i class="fas fa-microscope"></i>
+                <h5>Pathology</h5>
+                <p>Exploring genetic solutions for personalized healthcare.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="single-key">
+                <i class="fas fa-tooth"></i>
+                <h5>Dental Unit</h5>
+                <p>Comprehensive dental care for a healthy smile.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="single-key">
+             <i class="fas fa-procedures"></i>
+             <h5>OT</h5>
+             <p>Advancing healthcare through cutting-edge research.</p>
+         </div>
+     </div>
+
+     <div class="col-lg-4 col-md-6">
+        <div class="single-key">
+         <i class="fas fa-vial"></i>
+         <h5>Digital LAB</h5>
+         <p>Advancing healthcare through cutting-edge research.</p>
+     </div>
+ </div>
+ <div class="col-lg-4 col-md-6">
+    <div class="single-key">
+     <i class="fas fa-x-ray"></i>
+     <h5>X-ray</h5>
+     <p>Advancing healthcare through cutting-edge research.</p>
+ </div>
+</div>
+<div class="col-lg-4 col-md-6">
+    <div class="single-key">
+     <i class="fas fa-pills"></i>
+
+     <h5>Pharmacy</h5>
+     <p>Advancing healthcare through cutting-edge research.</p>
+ </div>
+</div>
+</div>
+</div>
 </section>
 
 
 <!-- doctors section starts  -->
 
-    
+
 <!--        <div class="panel-body" style = "background-color:;">
                 <?php
                    // $query = $conn->query("SELECT * FROM `candidate` WHERE `position` = 'President'") or die(mysqli_errno());
@@ -339,153 +369,72 @@ echo "<script>window.location.href ='index.php'</script>";
                     }
                 ?>
 
-                </div> -->
+            </div> -->
 
 
-<section class="doctors" id="doctors">
+            <section class="doctors" id="doctors">
 
-    <h1 class="heading"> our <span>doctors</span> </h1>
+                <h1 class="heading"> our <span>doctors</span> </h1>
 
-    <div class="box-container">
+                <div class="box-container">
 
-        <?php
+                    <?php
 
-        $query = $con->query("SELECT * FROM `doctors`") or die(mysqli_errno());
-        while($fetch = $query->fetch_array())
-        {
-            
-            
+                    $query = $con->query("SELECT * FROM `doctors`") or die(mysqli_errno());
+                    while($fetch = $query->fetch_array())
+                    {
 
 
-        ?>
-        <div class="box">
-            <!-- <img src = "admin/<?php echo $fetch['img']?>" style ="border-radius:6px;float:left" height = "150px"> -->
-            <img src="<?php echo "./hms/admin/".$fetch['img']; ?>" alt="<?php echo htmlentities($fetch['doctorName']); ?>" style="width: 180px; height: 180px;">
-            <h3><?php echo $fetch['doctorName']?></h3>
-            <span><?php echo $fetch['specilization']?></span><br><br>
-            <h5>
+
+
+                        ?>
+                        <div class="box">
+                            <!-- <img src = "admin/<?php echo $fetch['img']?>" style ="border-radius:6px;float:left" height = "150px"> -->
+                            <img src="<?php echo "./hms/admin/".$fetch['img']; ?>" alt="<?php echo htmlentities($fetch['doctorName']); ?>" style="width: 180px; height: 180px;">
+                            <h3><?php echo $fetch['doctorName']?></h3>
+                            <span><?php echo $fetch['specilization']?></span><br><br>
+                            <h5>
                 <?php $lines = explode("\n", $fetch['doctorprofileinfo']); // or use PHP PHP_EOL constant
-                    if ( !empty($lines) ) {
-                      echo '<ul>';
-                      foreach ( $lines as $line ) {
-                        echo '<li>'. trim( $line ) .'</li>';
-                      }
-                      echo '</ul>';
-                    }  ?>
-                    
-            </h5><br>
-            
-            <h4>Practice Days:</h4>
-            <span><?php echo $fetch['practiceDays']?></span>
+                if ( !empty($lines) ) {
+                  echo '<ul>';
+                  foreach ( $lines as $line ) {
+                    echo '<li>'. trim( $line ) .'</li>';
+                }
+                echo '</ul>';
+            }  ?>
 
-            <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-                
-            </div>
-        </div>
-        <?php
-        }
-        ?>
+        </h5><br>
 
+        <h4>Practice Days:</h4>
+        <span><?php echo $fetch['practiceDays']?></span>
 
-        <div class="box">
-            <img src="newassets/image/doc-2.jpg" alt="">
-            <h3>win coder</h3>
-            <span>expert doctor</span>
-            <div class="share">
+        <div class="share">
             <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
 
-        <div class="box">
-            <img src="newassets/image/doc-3.jpg" alt="">
-            <h3>win coder</h3>
-            <span>expert doctor</span>
-            <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
         </div>
-
-        <div class="box">
-            <img src="newassets/image/doc-4.jpg" alt="">
-            <h3>win coder</h3>
-            <span>expert doctor</span>
-            <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="newassets/image/doc-5.jpg" alt="">
-            <h3>win coder</h3>
-            <span>expert doctor</span>
-            <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="newassets/image/doc-6.jpg" alt="">
-            <h3>win coder</h3>
-            <span>expert doctor</span>
-            <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            
-            </div>
-        </div>
-        <div class="box">
-            <img src="newassets/image/doc-7.jpg" alt="">
-            <h3>win coder</h3>
-            <span>intern doctor</span>
-            <div class="share">
-                
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="newassets/image/doc-8.jpg" alt="">
-            <h3>win coder</h3>
-            <span>expert doctor</span>
-            <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="newassets/image/doc-9.jpg" alt="">
-            <h3>win coder</h3>
-            <span>expert doctor</span>
-            <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-        </div>
-
     </div>
+    <?php
+}
+?>
+
+
+<div class="box">
+    <img src="newassets/image/doc-2.jpg" alt="">
+    <h3>win coder</h3>
+    <span>expert doctor</span>
+    <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-twitter"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+    </div>
+</div>
+
+
+</div>
 
 </section>
 
@@ -504,14 +453,14 @@ echo "<script>window.location.href ='index.php'</script>";
         </div>
 
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-        <?php
+            <?php
             if(isset($message)) {
                 foreach($message as $message) {
-                echo'<p class ="message">'.$message.'</p>';
+                    echo'<p class ="message">'.$message.'</p>';
+                }
             }
-            }
-        ?>
-      
+            ?>
+
             <h3>make appointment</h3>
             <input type="text"name="name" placeholder="your name" class="box">
             <input type="number"name="number" placeholder="your number" class="box">
@@ -532,7 +481,7 @@ echo "<script>window.location.href ='index.php'</script>";
 
 
 
-    <!--  ************************* About Us Starts Here ************************** -->
+<!--  ************************* About Us Starts Here ************************** -->
 <!--         
     <section id="about_us" class="about-us">
         <div class="row no-margin">
@@ -552,79 +501,26 @@ echo "<script>window.location.href ='index.php'</script>";
     </section>     -->
     
     
-            <!--  ************************* Gallery Starts Here ************************** -->
-            <div id="gallery" class="gallery">    
-    <div class="container">
-        <div class="inner-title">
-            <h2>Our Gallery</h2>
-            <p>View Our Gallery</p>
-        </div>
-        <div class="row">
-            <div class="gallery-filter d-none d-sm-block">
-                <button class="btn btn-default filter-button" data-filter="all">All</button>
-                <button class="btn btn-default filter-button" data-filter="hdpe">Dental</button>
-                <button class="btn btn-default filter-button" data-filter="sprinkle">Cardiology</button>
-                <button class="btn btn-default filter-button" data-filter="spray">Neurology</button>
-                <button class="btn btn-default filter-button" data-filter="irrigation">Laboratory</button>
-            </div>
-            <br/>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="assets/images/gallery/gallery_01.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="assets/images/gallery/gallery_03.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="assets/images/gallery/d1.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="assets/images/gallery/d2.jpg" class="img-responsive">
-            </div>
-
-            <!-- Add two more images to the Cardiology section -->
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
-                <img src="assets/images/gallery/h1.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
-                <img src="assets/images/gallery/h2.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
-                <img src="assets/images/gallery/h3.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
-                <img src="assets/images/gallery/h4.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
-                <img src="assets/images/gallery/gallery_13.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
-                <img src="assets/images/gallery/gallery_14.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
-                <img src="assets/images/gallery/gallery_15.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
-                <img src="assets/images/gallery/gallery_05.jpg" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
-                <img src="assets/images/gallery/gallery_06.jpg" class="img-responsive">
+    <!--  ************************* Gallery Starts Here ************************** -->
+    <div class="photo-gallery">
+        <div class="container center">
+            <h1 class="heading">Our <span>Gallery</span>  </h1>   
+            <div class="row photos">
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_01.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_01.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_02.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_02.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_03.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_03.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_04.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_04.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_05.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_05.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_06.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_06.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_08.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_08.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_09.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_09.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_10.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_10.jpg"></a></div>
             </div>
         </div>
     </div>
-</div>
-        <!-- ######## Gallery End ####### -->
-     <!--  ************************* Contact Us Starts Here ************************** -->
+
+    <!-- ######## Gallery End ####### -->
+    <!--  ************************* Contact Us Starts Here ************************** -->
 <!--      <style>
     #contact_us {
         background-color: #f8f8f8;
@@ -729,7 +625,7 @@ echo "<script>window.location.href ='index.php'</script>";
         </div>
     </div>
 </section> -->
-    <!-- ################# Footer Starts Here#######################--->
+<!-- ################# Footer Starts Here#######################--->
 <!--     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -767,60 +663,60 @@ echo "<script>window.location.href ='index.php'</script>";
        <b> Hospital Management System | It's Me </b>            
     </div>
 </div>
- --> 
+--> 
 
-    <!-- footer section starts  -->
+<!-- footer section starts  -->
 
-    <section class="footer-design">
+<section class="footer-design">
 
-        <div class="box-container">
+    <div class="box-container">
 
 
-            <div class="box">
-                <h3>quick links</h3>
-                <a href="#home"> <i class="fas fa-chevron-right"></i> home </a>
-                <a href="#about"> <i class="fas fa-chevron-right"></i> about </a>
-                <a href="#services"> <i class="fas fa-chevron-right"></i> services </a>
-                <a href="#doctors"> <i class="fas fa-chevron-right"></i> doctors </a>
-                <a href="#appointment"> <i class="fas fa-chevron-right"></i> appointment </a>
-                <a href="#review"> <i class="fas fa-chevron-right"></i> review </a>
-                <a href="#blogs"> <i class="fas fa-chevron-right"></i> blogs </a>
-            </div>
-
-            <div class="box">
-                <h3>our services</h3>
-                <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> message therapy </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> cardioloty </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> diagnosis </a>
-                <a href="#"> <i class="fas fa-chevron-right"></i> ambulance service </a>
-            </div>
-
-            <div class="box">
-                <h3>appointment info</h3>
-                <a href="#"> <i class="fas fa-phone"></i> +8801688238801 </a>
-                <a href="#"> <i class="fas fa-phone"></i> +8801782546978 </a>
-                <a href="#"> <i class="fas fa-envelope"></i> wincoder9@gmail.com </a>
-                <a href="#"> <i class="fas fa-envelope"></i> sujoncse26@gmail.com </a>
-                <a href="#"> <i class="fas fa-map-marker-alt"></i> sylhet, bangladesh </a>
-            </div>
-
-            <div class="box">
-                <h3>follow us</h3>
-                <a href="#"> <i class="fab fa-faceappointment-f"></i> faceappointment </a>
-                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-                <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
-                <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
-                <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
-            </div>
-
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#home"> <i class="fas fa-chevron-right"></i> home </a>
+            <a href="#about"> <i class="fas fa-chevron-right"></i> about </a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> services </a>
+            <a href="#doctors"> <i class="fas fa-chevron-right"></i> doctors </a>
+            <a href="#appointment"> <i class="fas fa-chevron-right"></i> appointment </a>
+            <a href="#review"> <i class="fas fa-chevron-right"></i> review </a>
+            <a href="#blogs"> <i class="fas fa-chevron-right"></i> blogs </a>
         </div>
 
-        <div class="credit"> created by <span>JAHED HASAN</span> | all rights reserved </div>
+        <div class="box">
+            <h3>our services</h3>
+            <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> message therapy </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> cardioloty </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> diagnosis </a>
+            <a href="#"> <i class="fas fa-chevron-right"></i> ambulance service </a>
+        </div>
 
-    </section>
-    <!-- footer section ends -->
+        <div class="box">
+            <h3>appointment info</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +8801688238801 </a>
+            <a href="#"> <i class="fas fa-phone"></i> +8801782546978 </a>
+            <a href="#"> <i class="fas fa-envelope"></i> wincoder9@gmail.com </a>
+            <a href="#"> <i class="fas fa-envelope"></i> sujoncse26@gmail.com </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> sylhet, bangladesh </a>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"> <i class="fab fa-faceappointment-f"></i> faceappointment </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+            <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span>JAHED HASAN</span> | all rights reserved </div>
+
+</section>
+<!-- footer section ends -->
 </body>
 <script src="assets/js/jquery-3.2.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
@@ -830,5 +726,6 @@ echo "<script>window.location.href ='index.php'</script>";
 <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
 <script src="assets/js/script.js"></script>
 <script src="newassets/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 
 </html>

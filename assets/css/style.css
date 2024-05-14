@@ -423,60 +423,52 @@ header {
   padding: 50px;
   background-color: #FFF; }
 
-/* ===================================== Gallery Style  ================================== */
-.gallery-filter {
-  width: 100%;
-  text-align: center; }
-  .gallery-filter .btn {
-    background-color: #FFF; }
 
-.gallery {
-  padding: 80px 50px;
-  background-color: #FAFAFA; }
-  @media screen and (max-width: 940px) {
-    .gallery {
-      padding: 50px 10px; } }
+  /*gallery*/
 
-.gallery-title {
-  font-size: 36px;
-  color: #00ab9f;
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 70px; }
+.photo-gallery {
+  color:#313437;
+  background-color:#fff;
+}
 
-.gallery-title:after {
-  content: "";
-  position: absolute;
-  width: 7.5%;
-  left: 46.5%;
-  height: 45px;
-  border-bottom: 1px solid #00ab9f; }
+.photo-gallery p {
+  color:#7d8285;
+}
 
-.filter-button {
-  font-size: 18px;
-  border: 1px solid #00ab9f;
-  border-radius: 5px;
-  text-align: center;
-  color: #00ab9f;
-  margin-bottom: 30px; }
+.photo-gallery h2 {
+  font-weight:bold;
+  margin-bottom:40px;
+  padding-top:40px;
+  color:inherit;
+}
 
-.filter-button:hover {
-  font-size: 18px;
-  border: 1px solid #00ab9f;
-  border-radius: 5px;
-  text-align: center;
-  color: #ffffff;
-  background-color: #00ab9f; }
+@media (max-width:767px) {
+  .photo-gallery h2 {
+    margin-bottom:25px;
+    padding-top:25px;
+    font-size:24px;
+  }
+}
 
-.btn-default:active .filter-button:active {
-  background-color: #00ab9f;
-  color: white; }
+.photo-gallery .intro {
+  font-size:16px;
+  max-width:500px;
+  margin:0 auto 40px;
+}
 
-.port-image {
-  width: 100%; }
+.photo-gallery .intro p {
+  margin-bottom:0;
+}
 
-.gallery_product {
-  margin-bottom: 30px; }
+.photo-gallery .photos {
+  padding-bottom:20px;
+}
+
+.photo-gallery .item {
+  padding-bottom:30px;
+}
+
+
 
 /* ===================================== Fooer CSS ================================== */
 .footer {
