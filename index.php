@@ -1,33 +1,58 @@
 
 <?php
-include_once('hms/include/config.php');
+include_once('admin/include/config.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['specialization'])) {
+        $specialization = $_POST['specialization'];
+        $query = mysqli_query($con, "SELECT * FROM doctors WHERE specilization='$specialization'");
+
+        $doctors = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            $doctors[] = $row;
+        }
+
+        echo json_encode($doctors);
+        exit;
+    }
+}
+
 if(isset($_POST['submit']))
 {
     $name=$_POST['fullname'];
-    $email=$_POST['emailid'];
     $mobileno=$_POST['mobileno'];
+    $specilization=$_POST['Doctorspecialization'];
+    $doctorname=$_POST['doctor'];
+    $appdate=$_POST['appdate'];
     $dscrption=$_POST['description'];
-    $query=mysqli_query($con,"insert into tblcontactus(fullname,email,contactno,message) value('$name','$email','$mobileno','$dscrption')");
-    echo "<script>alert('Your information succesfully submitted');</script>";
-    echo "<script>window.location.href ='index.php'</script>";
+    $query=mysqli_query($con,"insert into tblappointment(doctorSpecialization,doctorname,fullname,contactno,appointmentDate,message) values('$specilization','$doctorname','$name','$mobileno','$appdate','$dscrption')");
+    if($query)
+    {
+        echo "<script>alert('Your appointment successfully booked');</script>";
+        header("Location: index.php");
+        exit;
+    }
 
-} ?>
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Feni Medinova Hospital </title>
-
-    <link rel="shortcut icon" href="assets/images/fav.jpg">
+    <title> Feni Medinova Specialized Hospital </title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon-16x16.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- custom css file link  -->
     <link rel="stylesheet" href="newassets/css/style.css">
 </head>
@@ -36,7 +61,7 @@ if(isset($_POST['submit']))
 
  <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> Feni <strong>MEDINOVA</strong> Hospital </a>
+    <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> Feni <strong>MEDINOVA</strong> Specialized Hospital </a>
 
     <nav class="navbar">
         <a href="#home">home</a>
@@ -44,58 +69,32 @@ if(isset($_POST['submit']))
         <a href="#services">Department</a>
         <a href="#doctors">doctors</a>
         <a href="#appointment">appointment</a>
-        <a href="hms/admin">login</a>
+        <a href="./admin">login</a>
     </nav>
 
     <div id="menu-btn" class="fas fa-bars"></div>
 
 </header> 
 
-<!-- ################# Header Starts Here#######################--->
-     <!--  <header id="menu-jk">
-        <div id="nav-head" class="header-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4  col-sm-12" style="color:#000;font-weight:bold; font-size:42px; margin-top: 1% !important;"><img src="">
-                       <a data-toggle="collapse" data-target="#menu" href="#menu" ><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
-                    </div>
-                    <div id="menu" class="col-lg-8 col-md-8 d-none d-md-block nav-item">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#services">Services</a></li>
-                            <li><a href="#about_us">About Us</a></li>
-                            <li><a href="#gallery">Gallery</a></li>
-                            <li><a href="#contact_us">Contact Us</a></li>
-                            <li><a href="#logins">Logins</a></li>  
-                        </ul>
-                    </div>
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                        <a class="btn btn-success" href="hms/user-login.php">Book an Appointment</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>    -->
     <!-- ################# Slider Starts Here#######################--->
-    <div class="slider-detail mt-0">
+    <div class="slider-detail" style="margin-top: 77px">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item ">
-                    <img class="d-block w-100" src="assets/images/slider/h1.jpeg" alt="First slide">
+                    <img class="d-block w-100" src="assets/images/slider/slider_1.jpg" alt="First slide">
                     <div class="carousel-cover"></div>
                     <div class="carousel-caption vdg-cur d-none d-md-block">
-                        <h5 class="animated bounceInDown">Feni Medinova Specialized Hospital </h5>
+                        <h5 class="animated bounceInDown">Feni Medinova Hospital is one of the best private medical service centers in Feni. </h5>
                     </div>
                 </div>
 
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="assets/images/slider/H2.jpg" alt="Second slide">
+                    <img class="d-block w-100" src="assets/images/slider/slider_2.jpg" alt="Second slide">
                     <div class="carousel-cover"></div>
                     <div class="carousel-caption vdg-cur d-none d-md-block">
                         <h5 class="animated bounceInDown">we provide quality service</h5>
@@ -103,20 +102,14 @@ if(isset($_POST['submit']))
                 </div>
 
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="assets/images/slider/H3.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="assets/images/slider/slider_3.jpg" alt="Third slide">
                     <div class="carousel-cover"></div>
                     <div class="carousel-caption vdg-cur d-none d-md-block">
                         <h5 class="animated bounceInDown">we provide quality service</h5>
                     </div>
                 </div>
 
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="assets/images/slider/H4.jpg" alt="Fourth slide">
-                    <div class="carousel-cover"></div>
-                    <div class="carousel-caption vdg-cur d-none d-md-block">
-                        <h5 class="animated bounceInDown">we provide quality service</h5>
-                    </div>
-                </div>    
+                 
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -136,11 +129,19 @@ if(isset($_POST['submit']))
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
             <div class="suscribe-text text-center">
               <h3>CALL FOR DOCTOR APPOINTMENT</h3>
-              <a class="sus-btn" href="tel:01842101211"><i class="fa fa-phone" ></i> 01842-101211</a> 
-              <a class="sus-btn" href="tel:01842101211"><i class="fa fa-phone" ></i> 01842-101211</a>
-          </div>
-      </div>
-  </div>
+
+              <?php
+              $ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
+              while ($row=mysqli_fetch_array($ret)) {
+                ?>
+                <a class="sus-btn" href="tel:<?php echo $row['MobileNumber1'] ;?>"> <i class="fas fa-phone"> </i>&emsp;<?php  echo $row['MobileNumber1'];?> </a>
+
+
+                <a class="sus-btn" href="tel:<?php echo $row['MobileNumber2'] ;?>"> <i class="fas fa-phone"> </i>&emsp;<?php  echo $row['MobileNumber2'];?> </a>
+            <?php } ?> 
+        </div>
+    </div>
+</div>
 </div>
 </div><!-- End Suscribe Section -->
 <!-- about section starts  -->
@@ -157,88 +158,22 @@ if(isset($_POST['submit']))
 
         <div class="content">
             <h3>take the world's best quality treatment</h3>
-            <p>Feni Medinova Hospital is one of the best private medical service centers in Feni.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus vero ipsam laborum porro voluptates voluptatibus a nihil temporibus deserunt vel?</p>
-            <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
+            <?php
+            $ret=mysqli_query($con,"select * from tblpage where PageType='aboutus' ");
+            while ($row=mysqli_fetch_array($ret)) {
+                ?>
+
+                <!-- <p><?php  echo $row['PageDescription'];?>.</p> -->
+
+                <p><?php  echo $row['PageDescription'];?> </p>
+            <?php } ?>
+            <!-- <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a> -->
         </div>
 
     </div>
 
 </section>
 
-<!-- about section ends -->
-
-<!--  ************************* Logins ************************** -->
-
-   <!--   <section id="logins" class="our-blog container-fluid">
-        <div class="container">
-        <div class="inner-title">
-
-<h2 style="font-size: 38px;font-family:times new roman; text-align: center; margin-bottom: 20px;"><b>Logins</b></h2>
-            </div>
-            <div class="col-sm-12 blog-cont">
-                <div class="row no-margin">
-                    <div class="col-sm-4 blog-smk">
-                        <div class="blog-single">
-
-                                <img src="assets/images/new-user.jpg" height="200px" alt="">
-
-                            <div class="blog-single-det">
-                                <h6>Patient Login</h6>
-                                <a href="hms/user-login.php" target="_blank">
-                                    <button class="btn btn-success btn-sm">Click  Here</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 blog-smk">
-                        <div class="blog-single">
-
-                                <img src="assets/images/d1.jpg" alt="">
-
-                            <div class="blog-single-det">
-                                <h6>Doctors login</h6>
-                                <a href="hms/doctor" target="_blank">
-                                    <button class="btn btn-success btn-sm">Click Here</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-4 blog-smk">
-                        <div class="blog-single">
-
-                                <img src="assets/images/a1.jpg" height="200px" alt="">
-
-                            <div class="blog-single-det">
-                                <h6>Admin Login</h6>
-                    
-                                <a href="hms/admin" target="_blank">
-                                    <button class="btn btn-success btn-sm">Click Here</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-        </div>
-    </section>   -->
-
-    <!-- ################# Our Departments Starts Here#######################--->
-<!--     
-CCU
-HDU 
-NICU 
-dialysis 
-MRI
-Pathology 
-Dental Unit 
-OT
-Digital LAB 
-Pharmacy 
-X-ray -->
 
 <section id="services" class="key-features department" style="margin-top: -50px">
     <div class="container">
@@ -347,53 +282,30 @@ X-ray -->
 <!-- doctors section starts  -->
 
 
-<!--        <div class="panel-body" style = "background-color:;">
-                <?php
-                   // $query = $conn->query("SELECT * FROM `candidate` WHERE `position` = 'President'") or die(mysqli_errno());
-                   // while($fetch = $query->fetch_array())
-                {
-                ?>
-                   <div id = "position" style="overflow:hidden">
-                       <div>
-                       <img src = "admin/<?php //echo $fetch['img']?>" style ="border-radius:6px;float:left" height = "150px" width = "150px" class = "img">
-                       <img src = "admin/<?php //echo $fetch['symbol']?>" style ="border-radius:6px;float:right" height = "110px" width = "110px" class = "img">
-                       </div>
-                    
-                    
-                    <center><button type="button" class="btn btn-primary btn-xs" style = "border-radius:60px;margin-top:30px;"><?php// echo $fetch['firstname']." ".$fetch['lastname']?></button></center>
-                    <center><input type = "checkbox" value = "<?php// echo $fetch['candidate_id'] ?>" name = "pres_id" class = "president"></center>
-                    <center><span style="margin-top:4px;"><?php// echo $fetch['year_level']?></span></center>
-                </div>
-
-                <?php
-                    }
-                ?>
-
-            </div> -->
 
 
-            <section class="doctors" id="doctors">
+<section class="doctors" id="doctors">
 
-                <h1 class="heading"> our <span>doctors</span> </h1>
+    <h1 class="heading"> our <span>doctors</span> </h1>
 
-                <div class="box-container">
+    <div class="box-container">
 
-                    <?php
+        <?php
 
-                    $query = $con->query("SELECT * FROM `doctors`") or die(mysqli_errno());
-                    while($fetch = $query->fetch_array())
-                    {
+        $query = $con->query("SELECT * FROM `doctors`") or die(mysqli_errno());
+        while($fetch = $query->fetch_array())
+        {
 
 
 
 
-                        ?>
-                        <div class="box">
-                            <!-- <img src = "admin/<?php echo $fetch['img']?>" style ="border-radius:6px;float:left" height = "150px"> -->
-                            <img src="<?php echo "./hms/admin/".$fetch['img']; ?>" alt="<?php echo htmlentities($fetch['doctorName']); ?>" style="width: 180px; height: 180px;">
-                            <h3><?php echo $fetch['doctorName']?></h3>
-                            <span><?php echo $fetch['specilization']?></span><br><br>
-                            <h5>
+            ?>
+            <div class="box">
+                
+                <img src="<?php echo "./admin/".$fetch['img']; ?>" alt="<?php echo htmlentities($fetch['doctorName']); ?>" style="width: 180px; height: 180px;">
+                <h3><?php echo $fetch['doctorName']?></h3>
+                <span><?php echo $fetch['specilization']?></span><br><br>
+                <h5>
                 <?php $lines = explode("\n", $fetch['doctorprofileinfo']); // or use PHP PHP_EOL constant
                 if ( !empty($lines) ) {
                   echo '<ul>';
@@ -405,33 +317,18 @@ X-ray -->
 
         </h5><br>
 
-        <h4>Practice Days:</h4>
+        <h4>Patient Visiting Schedule:</h4>
         <span><?php echo $fetch['practiceDays']?></span>
 
-        <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-twitter"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-linkedin"></a>
-
+        <div class="mt-5">
+            <a href="#appointment" class="btn"> Appointment <span class="fas fa-chevron-right"></span> </a>
         </div>
+        
     </div>
     <?php
 }
 ?>
 
-
-<div class="box">
-    <img src="newassets/image/doc-2.jpg" alt="">
-    <h3>win coder</h3>
-    <span>expert doctor</span>
-    <div class="share">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-    </div>
-</div>
 
 
 </div>
@@ -453,19 +350,29 @@ X-ray -->
         </div>
 
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-            <?php
-            if(isset($message)) {
-                foreach($message as $message) {
-                    echo'<p class ="message">'.$message.'</p>';
-                }
-            }
-            ?>
+
 
             <h3>make appointment</h3>
-            <input type="text"name="name" placeholder="your name" class="box">
-            <input type="number"name="number" placeholder="your number" class="box">
-            <input type="email"name="email" placeholder="your email" class="box">
-            <input type="date"name="date" class="box">
+            <input type="text"name="fullname" placeholder="Patient name" class="box" required>
+            <input type="text"name="mobileno" placeholder="Patient number" class="box" required>
+            <select  name="Doctorspecialization" id="Doctorspecialization" class="box" required>
+                <option value="">Select Specialization</option>
+                <?php $ret=mysqli_query($con,"select * from doctorspecilization");
+                while($row=mysqli_fetch_array($ret))
+                {
+                    ?>
+                    <option value="<?php echo htmlentities($row['specilization']);?>">
+                        <?php echo htmlentities($row['specilization']);?>
+                    </option>
+                <?php } ?>
+
+            </select>
+            
+            <select name="doctor" id="doctor" class="box" required>
+                <option value="">Select Doctor</option>
+            </select>
+            <input type="date"name="appdate"  class="box">
+            <textarea rows="2" id="description" placeholder="Enter Your Message Or Additional Information" class="box" name="description" required="" ></textarea>
             <input type="submit" name="submit" value="appointment now" class="btn">
         </form>
 
@@ -479,26 +386,6 @@ X-ray -->
 
 
 
-
-
-<!--  ************************* About Us Starts Here ************************** -->
-<!--         
-    <section id="about_us" class="about-us">
-        <div class="row no-margin">
-            <div class="col-sm-6 image-bg no-padding">
-                
-            </div>
-            <div class="col-sm-6 abut-yoiu">
-                <h3>About Our Hospital</h3>
-<?php
-//$ret=mysqli_query($con,"select * from tblpage where PageType='aboutus' ");
-//while ($row=mysqli_fetch_array($ret)) {
-?>
-
-    <p><?php  //echo $row['PageDescription'];?>.</p><?php //} ?>
-            </div>
-        </div>
-    </section>     -->
     
     
     <!--  ************************* Gallery Starts Here ************************** -->
@@ -676,44 +563,61 @@ X-ray -->
             <h3>quick links</h3>
             <a href="#home"> <i class="fas fa-chevron-right"></i> home </a>
             <a href="#about"> <i class="fas fa-chevron-right"></i> about </a>
-            <a href="#services"> <i class="fas fa-chevron-right"></i> services </a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> Department </a>
             <a href="#doctors"> <i class="fas fa-chevron-right"></i> doctors </a>
             <a href="#appointment"> <i class="fas fa-chevron-right"></i> appointment </a>
-            <a href="#review"> <i class="fas fa-chevron-right"></i> review </a>
-            <a href="#blogs"> <i class="fas fa-chevron-right"></i> blogs </a>
         </div>
 
         <div class="box">
-            <h3>our services</h3>
-            <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> message therapy </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> cardioloty </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> diagnosis </a>
-            <a href="#"> <i class="fas fa-chevron-right"></i> ambulance service </a>
+            <h3>our department</h3>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> CCU, HDU, NICU </a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> dialysis</a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> MRI, X-ray </a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> pathology </a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> dental unit </a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> OT </a>
+            <a href="#services"> <i class="fas fa-chevron-right"></i> digital lab </a>
         </div>
 
         <div class="box">
-            <h3>appointment info</h3>
-            <a href="#"> <i class="fas fa-phone"></i> +8801688238801 </a>
-            <a href="#"> <i class="fas fa-phone"></i> +8801782546978 </a>
-            <a href="#"> <i class="fas fa-envelope"></i> wincoder9@gmail.com </a>
-            <a href="#"> <i class="fas fa-envelope"></i> sujoncse26@gmail.com </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> sylhet, bangladesh </a>
+            <?php
+            $ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
+            while ($row=mysqli_fetch_array($ret)) {
+                ?>
+                <h3>Contact info</h3>
+                <h4>for appointment</h4>
+                <a href="tel:<?php echo $row['MobileNumber1'] ;?>"> <i class="fas fa-phone"></i><?php  echo $row['MobileNumber1'];?> </a>
+                <a href="tel:<?php echo $row['MobileNumber2'] ;?>"> <i class="fas fa-phone"></i><?php  echo $row['MobileNumber2'];?> </a>
+                <h4>for admission</h4>
+                <a href="tel:<?php echo $row['Admissionmobnum1'] ;?>"> <i class="fas fa-phone"></i><?php  echo $row['Admissionmobnum1'];?> </a>
+                <a href="tel:<?php echo $row['Admissionmobnum2'] ;?>"> <i class="fas fa-phone"></i><?php  echo $row['Admissionmobnum2'];?> </a>
+                <a href="mailto:<?php echo $row['Email'];?>"> <i class="fas fa-envelope"></i><?php echo $row['Email']; ?> </a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i><?php echo $row['PageDescription']; ?> </a>
+
+            <?php } ?> 
         </div>
 
         <div class="box">
             <h3>follow us</h3>
-            <a href="#"> <i class="fab fa-faceappointment-f"></i> faceappointment </a>
-            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-facebook"></i> facebook </a>
             <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
             <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
             <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
             <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
+            <div>
+                 <!-- Start Map -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14689.553751799534!2d91.37901888014031!3d23.009505759353225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753690d8144f7e9%3A0xa29943247bca432a!2sFeni%20Medinova%20Ambulance%20Service!5e0!3m2!1sen!2sbd!4v1687343971325!5m2!1sen!2sbd" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <!-- End Map -->
+            </div>
         </div>
 
     </div>
 
-    <div class="credit"> created by <span>JAHED HASAN</span> | all rights reserved </div>
+    <div class="credit">
+     Feni Medinova Specialized Hospital | all rights reserved .<br>
+
+     <h5>developed by <span><a href="www.facebook.com/jahed.hasann" target="_blank">JAHED HASAN</a></span></h5>
+    </div>
 
 </section>
 <!-- footer section ends -->
@@ -727,5 +631,25 @@ X-ray -->
 <script src="assets/js/script.js"></script>
 <script src="newassets/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#Doctorspecialization').change(function() {
+            var specialization = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo $_SERVER['PHP_SELF'];?>',
+                data: { specialization: specialization },
+                success: function(response) {
+                    var doctors = JSON.parse(response);
+                    $('#doctor').empty();
+                    $('#doctor').append('<option value="">Select Doctor</option>');
+                    $.each(doctors, function(index, doctor) {
+                        $('#doctor').append('<option value="' + doctor.doctorName + '">' + doctor.doctorName + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 </html>
