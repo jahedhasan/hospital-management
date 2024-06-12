@@ -59,7 +59,7 @@
 								<i class="ti-files"></i>
 							</div>
 							<div class="item-inner">
-								<span class="title"> Conatct us Queries / Appointment </span><i class="icon-arrow"></i>
+								<span class="title"> Contact us Queries / Appointment </span><i class="icon-arrow"></i>
 							</div>
 						</div>
 					</a>
@@ -105,6 +105,11 @@
 						<li>
 							<a href="contact.php">
 								<span class="title">Cotnact Us </span>
+							</a>
+						</li>
+						<li>
+							<a href="slider.php">
+								<span class="title">Slider </span>
 							</a>
 						</li>
 					</ul>

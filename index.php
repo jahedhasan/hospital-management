@@ -40,11 +40,18 @@ if(isset($_POST['submit']))
 <html lang="en">
 
 <head>
-    <title> Feni Medinova Specialized Hospital </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Feni Medinova Specialized Hospital Has Been Providing World Class Medical Services In Feni District With Modern Medical Equipment Under The Supervision Of Experienced Doctors For Almost 10 Years Including  Emergency Services, NICU, HDU, CCU, Dialysis, MRI, Digital Diagonstic And 24 Hours OT. Feni Medinova Specialized Hospital Is Always At Your Side With All Healthcare Services.">
+    <meta name="keywords" content="Hospital, Medical, Services, Ambulance,Medinova, Feni Medinova, Best Private Hospital, Feni Town, Feni hospital, Feni Sadar, SSk road, Medinova hospital, Best services">
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <title> Feni Medinova Specialized Hospital | Best Private Medical Hospital in Feni.</title>
+    
+     <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Best Hospital Services in Feni Town - Feni Medinova Specialized Hospital">
+    <meta property="og:description" content="Feni Medinova Specialized Hospital Has Been Providing World Class Medical Services In Feni District With Modern Medical Equipment Under The Supervision Of Experienced Doctors For Almost 10 Years Including  Emergency Services, NICU, HDU, CCU, Dialysis, MRI, Digital Diagonstic And 24 Hours OT.">
+    <meta property="og:image" content="assets/images/opengraph.jpg">
+    <meta property="og:url" content="http://fenimedinova.com/">
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon-16x16.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/fontawsom-all.min.css">
@@ -57,11 +64,11 @@ if(isset($_POST['submit']))
     <link rel="stylesheet" href="newassets/css/style.css">
 </head>
 
-<body>
+<body id="home">
 
  <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> Feni <strong>MEDINOVA</strong> Specialized Hospital </a>
+    <a href="#home" class="logo"> <img  height="40" width="40" src="./assets/images/medinova-logo.png"/>Feni <strong>MEDINOVA</strong> Specialized Hospital </a>
 
     <nav class="navbar">
         <a href="#home">home</a>
@@ -76,51 +83,47 @@ if(isset($_POST['submit']))
 
 </header> 
 
-    <!-- ################# Slider Starts Here#######################--->
-    <div class="slider-detail" style="margin-top: 77px">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item ">
-                    <img class="d-block w-100" src="assets/images/slider/slider_1.jpg" alt="First slide">
-                    <div class="carousel-cover"></div>
-                    <div class="carousel-caption vdg-cur d-none d-md-block">
-                        <h5 class="animated bounceInDown">Feni Medinova Hospital is one of the best private medical service centers in Feni. </h5>
-                    </div>
-                </div>
-
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="assets/images/slider/slider_2.jpg" alt="Second slide">
-                    <div class="carousel-cover"></div>
-                    <div class="carousel-caption vdg-cur d-none d-md-block">
-                        <h5 class="animated bounceInDown">we provide quality service</h5>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="assets/images/slider/slider_3.jpg" alt="Third slide">
-                    <div class="carousel-cover"></div>
-                    <div class="carousel-caption vdg-cur d-none d-md-block">
-                        <h5 class="animated bounceInDown">we provide quality service</h5>
-                    </div>
-                </div>
-
-                 
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+        <!-- ################# Slider Starts Here#######################-->
+<div class="slider-detail" style="margin-top: 77px">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <ol class="carousel-indicators">
+            <?php
+            // Fetch all slider data
+            $slidercontent = mysqli_query($con, "SELECT * FROM slider");
+            $sliderCount = mysqli_num_rows($slidercontent);
+            for ($i = 0; $i < $sliderCount; $i++) {
+                $activeClass = $i == 0 ? 'class="active"' : '';
+                echo '<li data-target="#carouselExampleIndicators" data-slide-to="' . $i . '" ' . $activeClass . '></li>';
+            }
+            ?>
+        </ol>
+        <div class="carousel-inner">
+            <?php
+            // Initialize a counter to set the active class on the first item
+            $isActive = true;
+            while ($sliderData = mysqli_fetch_array($slidercontent)) {
+                $activeClass = $isActive ? ' active' : '';
+                echo '<div class="carousel-item' . $activeClass . '">';
+                echo '<img class="d-block w-100" src="' . $sliderData['image'] . '" alt="' . $sliderData['slidertext'] . '">';
+                echo '<div class="carousel-cover"></div>';
+                echo '<div class="carousel-caption vdg-cur d-none d-md-block">';
+                echo '<h5 class="animated bounceInDown">' . $sliderData['slidertext'] . '</h5>';
+                echo '</div>';
+                echo '</div>';
+                $isActive = false;
+            }
+            ?>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+</div>
 
     <!-- ======= Suscribe Section ======= -->
     <div class="suscribe-area" style="margin-top:15px;">
@@ -147,30 +150,34 @@ if(isset($_POST['submit']))
 <!-- about section starts  -->
 
 <section class="about" id="about">
-
-    <h1 class="heading"> <span>about</span> us </h1>
-
-    <div class="row">
-
-        <div class="image">
-            <img src="newassets/image/about-img.svg" alt="">
+    <div class="container">
+       
+    
+        <div class="row">
+    
+            <div class="image">
+                <img src="newassets/image/about-img.svg" alt="">
+            </div>
+    
+            <div class="content text-center ">
+                <p style="font-size: 20px;font-weight: 600;">take the world's best quality treatment</p>
+                <?php
+                $ret=mysqli_query($con,"select * from tblpage where PageType='aboutus' ");
+                while ($row=mysqli_fetch_array($ret)) {
+                    ?>
+    
+                    <!-- <p><?php  echo $row['PageDescription'];?>.</p> -->
+    
+                    <p><?php  echo $row['PageDescription'];?> </p>
+                <?php } ?>
+                <!-- <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a> -->
+            </div>
+    
         </div>
-
-        <div class="content">
-            <h3>take the world's best quality treatment</h3>
-            <?php
-            $ret=mysqli_query($con,"select * from tblpage where PageType='aboutus' ");
-            while ($row=mysqli_fetch_array($ret)) {
-                ?>
-
-                <!-- <p><?php  echo $row['PageDescription'];?>.</p> -->
-
-                <p><?php  echo $row['PageDescription'];?> </p>
-            <?php } ?>
-            <!-- <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a> -->
-        </div>
-
+        
     </div>
+
+        
 
 </section>
 
@@ -259,12 +266,7 @@ if(isset($_POST['submit']))
          <p>Advancing healthcare through cutting-edge research.</p>
      </div>
  </div>
- <div class="col-lg-4 col-md-6">
-    <div class="single-key">
-     <i class="fas fa-x-ray"></i>
-     <h5>X-ray</h5>
-     <p>Advancing healthcare through cutting-edge research.</p>
- </div>
+ 
 </div>
 <div class="col-lg-4 col-md-6">
     <div class="single-key">
@@ -401,7 +403,7 @@ if(isset($_POST['submit']))
                 <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_06.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_06.jpg"></a></div>
                 <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_08.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_08.jpg"></a></div>
                 <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_09.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_09.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_10.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_10.jpg"></a></div>
+                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_10.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_07.jpg"></a></div>
             </div>
         </div>
     </div>
@@ -566,6 +568,8 @@ if(isset($_POST['submit']))
             <a href="#services"> <i class="fas fa-chevron-right"></i> Department </a>
             <a href="#doctors"> <i class="fas fa-chevron-right"></i> doctors </a>
             <a href="#appointment"> <i class="fas fa-chevron-right"></i> appointment </a>
+            <h3>follow us</h3>
+            <a href="https://www.facebook.com/medinovahospital.feni" target="_blank"> <i class="fab fa-facebook"></i> facebook </a>
         </div>
 
         <div class="box">
@@ -598,17 +602,13 @@ if(isset($_POST['submit']))
         </div>
 
         <div class="box">
-            <h3>follow us</h3>
-            <a href="#"> <i class="fab fa-facebook"></i> facebook </a>
-            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
-            <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
-            <a href="#"> <i class="fab fa-pinterest"></i> pinterest </a>
-            <div>
+            
+            <h3>Location on google Maps</h3>
+            
                  <!-- Start Map -->
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14689.553751799534!2d91.37901888014031!3d23.009505759353225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753690d8144f7e9%3A0xa29943247bca432a!2sFeni%20Medinova%20Ambulance%20Service!5e0!3m2!1sen!2sbd!4v1687343971325!5m2!1sen!2sbd" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.3824208759365!2d91.39127457350703!3d23.00972681681084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753683a8b8555d5%3A0xf5751b9b06225e07!2sFeni%20Medinova%20Specialized%20Hospital!5e0!3m2!1sen!2sbd!4v1718002782254!5m2!1sen!2sbd" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               <!-- End Map -->
-            </div>
+            
         </div>
 
     </div>
@@ -616,7 +616,7 @@ if(isset($_POST['submit']))
     <div class="credit">
      Feni Medinova Specialized Hospital | all rights reserved .<br>
 
-     <h5>developed by <span><a href="www.facebook.com/jahed.hasann" target="_blank">JAHED HASAN</a></span></h5>
+     <h5>developed by <span><a href="https://www.facebook.com/jahed.hasann" target="_blank">JAHED HASAN</a></span></h5>
     </div>
 
 </section>
