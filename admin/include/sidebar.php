@@ -21,6 +21,18 @@
 					</a>
 				</li>
 				<li>
+					<a href="notice.php">
+						<div class="item-content">
+							<div class="item-media">
+								<i class="ti-announcement"></i>
+							</div>
+							<div class="item-inner">
+								<span class="title"> Notice </span>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
 					<a href="javascript:void(0)">
 						<div class="item-content">
 							<div class="item-media">
@@ -110,6 +122,11 @@
 						<li>
 							<a href="slider.php">
 								<span class="title">Slider </span>
+							</a>
+						</li>
+						<li>
+							<a href="gallery.php">
+								<span class="title">Gallery </span>
 							</a>
 						</li>
 					</ul>

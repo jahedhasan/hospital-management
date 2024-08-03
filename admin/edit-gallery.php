@@ -6,13 +6,13 @@ if(strlen($_SESSION['id']==0)) {
 	header('location:logout.php');
 } else{
 
-$sid=intval($_GET['id']);// get slider id
+$sid=intval($_GET['id']);// get gallery id
 if(isset($_POST['submit'])) {
-    $slidertext = mysqli_real_escape_string($con, $_POST['slidertext']);
+   
     $image = mysqli_real_escape_string($con, $_POST['image']);
     
     // Retrieve current image path
-    $result = mysqli_query($con, "SELECT image FROM slider WHERE id='$sid'");
+    $result = mysqli_query($con, "SELECT image FROM gallery WHERE id='$sid'");
     $row = mysqli_fetch_assoc($result);
     $current_image = $row['image'];
 
@@ -22,39 +22,36 @@ if(isset($_POST['submit'])) {
     	$image= addslashes(file_get_contents($_FILES['image']['tmp_name']));
 			$image_name= addslashes($_FILES['image']['name']);
 			$image_size= getimagesize($_FILES['image']['tmp_name']);
-			move_uploaded_file($_FILES["image"]["tmp_name"],"../assets/images/slider/" . $_FILES["image"]["name"]);			
-			$location="assets/images/slider/" . $_FILES["image"]["name"];
+			move_uploaded_file($_FILES["image"]["tmp_name"],"../assets/images/gallery/" . $_FILES["image"]["name"]);			
+			$location="assets/images/gallery/" . $_FILES["image"]["name"];
 			$image_uploaded = true;
     }
 
     if($image_uploaded) {
 
     	// Delete the old image file if a new image is uploaded
+
         if (!empty($current_image) && file_exists("../".$current_image)) {
-            unlink("../".$current_image);
+        	unlink("../" . $current_image);
+           
         }
-        $sql = "UPDATE slider SET 
-                    slidertext='$slidertext', 
+        $sql = "UPDATE gallery SET 
+                   
                     image='$location'
                 WHERE id='$sid'";
-    } else {
-        $sql = "UPDATE slider SET 
-                    slidertext='$slidertext' 
-  
-                WHERE id='$sid'";
-    }
+    } 
 
     if(mysqli_query($con, $sql)) {
-        $msg = "Slider Updated Successfully";
+        $msg = "Gallery Updated Successfully";
     } else {
-        $msg = "Error updating slider details: " . mysqli_error($con);
+        $msg = "Error updating gallery details: " . mysqli_error($con);
     }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Admin | Edit Slider Details</title>
+	<title>Admin | Edit gallery Details</title>
 
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 	<link rel="icon" type="image/x-icon" href="../assets/favicon/favicon-16x16.png">
@@ -89,14 +86,14 @@ if(isset($_POST['submit'])) {
 					<section id="page-title">
 						<div class="row">
 							<div class="col-sm-8">
-								<h1 class="mainTitle">Admin | Edit Slider Details</h1>
+								<h1 class="mainTitle">Admin | Edit gallery Details</h1>
 							</div>
 							<ol class="breadcrumb">
 								<li>
 									<span>Admin</span>
 								</li>
 								<li class="active">
-									<span>Edit Slider Details</span>
+									<span>Edit Gallery Details</span>
 								</li>
 							</ol>
 						</div>
@@ -113,28 +110,23 @@ if(isset($_POST['submit'])) {
 											<div class="panel panel-white">
 												
 												<div class="panel-body">
-													<?php $sql=mysqli_query($con,"select * from slider where id='$sid'");
+													<?php $sql=mysqli_query($con,"select * from gallery where id='$sid'");
 													while($data=mysqli_fetch_array($sql))
 													{
 														?>
-														<h3>Slider <?php echo htmlentities($data['id']);?> Content</h3>
+														<h3>Gallery Image <?php echo htmlentities($data['id']);?></h3>
 														
 														<hr />
 														<form role="form" name="adddoc" method="post"  onSubmit="return valid();" enctype="multipart/form-data">
 															
-																<div class="form-group">
-																	<label for="slidertext">
-																		Slider Text
-																	</label>
-																	<input type="text" name="slidertext" class="form-control" value="<?php echo htmlentities($data['slidertext']);?>" >
-																</div>
+																
 															
 															
 																<div class="form-group">
-			                                                        <label for="image">Image (Please provide only 1056x408 px)</label>
-			                                                        <input type="file" name="image" class="form-control">
+			                                                        <label for="image">Image (Please provide only <span style="color: red">365x365 px</span>)</label>
+			                                                        <input type="file" id="image" name="image" class="form-control">
 			                                                        <?php if (!empty($data['image'])) { ?>
-			                                                        <img src="../<?php echo htmlentities($data['image']); ?>" alt="medinova slider Image" style="width: 150px; height: 80px;">
+			                                                        <img src="../<?php echo htmlentities($data['image']); ?>" alt="medinova gallery Image" style="width: 150px; height: 80px;">
 			                                                        <?php } ?>
 			                                                    </div>
 
@@ -144,7 +136,7 @@ if(isset($_POST['submit'])) {
 															<?php } ?>
 
 
-															<button type="submit" name="submit" class="btn btn-o btn-primary">
+															<button type="submit" name="submit"  class="btn btn-o btn-primary" id="updateButton" disabled>
 																Update
 															</button>
 														</form>
@@ -214,6 +206,15 @@ if(isset($_POST['submit'])) {
 			Main.init();
 			FormElements.init();
 		});
+		// Disable Update button until a file is selected
+			document.getElementById('image').addEventListener('change', function() {
+				var updateButton = document.getElementById('updateButton');
+				if (this.files.length > 0) {
+					updateButton.disabled = false;
+				} else {
+					updateButton.disabled = true;
+				}
+			});
 	</script>
 	<!-- end: JavaScript Event Handlers for this page -->
 	<!-- end: CLIP-TWO JAVASCRIPTS -->

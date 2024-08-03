@@ -24,8 +24,7 @@ if(isset($_POST['submit']))
     $specilization=$_POST['Doctorspecialization'];
     $doctorname=$_POST['doctor'];
     $appdate=$_POST['appdate'];
-    $dscrption=$_POST['description'];
-    $query=mysqli_query($con,"insert into tblappointment(doctorSpecialization,doctorname,fullname,contactno,appointmentDate,message) values('$specilization','$doctorname','$name','$mobileno','$appdate','$dscrption')");
+    $query=mysqli_query($con,"insert into tblappointment(doctorSpecialization,doctorname,fullname,contactno,appointmentDate) values('$specilization','$doctorname','$name','$mobileno','$appdate')");
     if($query)
     {
         echo "<script>alert('Your appointment successfully booked');</script>";
@@ -47,7 +46,7 @@ if(isset($_POST['submit']))
     
     <title> Feni Medinova Specialized Hospital | Best Private Medical Hospital in Feni.</title>
     
-     <!-- Open Graph Meta Tags for Social Media -->
+    <!-- Open Graph Meta Tags for Social Media -->
     <meta property="og:title" content="Best Hospital Services in Feni Town - Feni Medinova Specialized Hospital">
     <meta property="og:description" content="Feni Medinova Specialized Hospital Has Been Providing World Class Medical Services In Feni District With Modern Medical Equipment Under The Supervision Of Experienced Doctors For Almost 10 Years Including  Emergency Services, NICU, HDU, CCU, Dialysis, MRI, Digital Diagonstic And 24 Hours OT.">
     <meta property="og:image" content="assets/images/opengraph.jpg">
@@ -83,7 +82,7 @@ if(isset($_POST['submit']))
 
 </header> 
 
-        <!-- ################# Slider Starts Here#######################-->
+<!-- ################# Slider Starts Here#######################-->
 <div class="slider-detail" style="margin-top: 77px">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2000">
         <ol class="carousel-indicators">
@@ -125,61 +124,82 @@ if(isset($_POST['submit']))
     </div>
 </div>
 
-    <!-- ======= Suscribe Section ======= -->
-    <div class="suscribe-area" style="margin-top:15px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
-            <div class="suscribe-text text-center">
-              <h3>CALL FOR DOCTOR APPOINTMENT</h3>
+<!-- ======= Suscribe Section ======= -->
+<div class="suscribe-area" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+        <div class="suscribe-text text-center">
+          <h3>CALL FOR DOCTOR APPOINTMENT</h3>
 
-              <?php
-              $ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
-              while ($row=mysqli_fetch_array($ret)) {
-                ?>
-                <a class="sus-btn" href="tel:<?php echo $row['MobileNumber1'] ;?>"> <i class="fas fa-phone"> </i>&emsp;<?php  echo $row['MobileNumber1'];?> </a>
+          <?php
+          $ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
+          while ($row=mysqli_fetch_array($ret)) {
+            ?>
+            <a class="sus-btn" href="tel:<?php echo $row['MobileNumber1'] ;?>"> <i class="fas fa-phone"> </i>&emsp;<?php  echo $row['MobileNumber1'];?> </a>
 
 
-                <a class="sus-btn" href="tel:<?php echo $row['MobileNumber2'] ;?>"> <i class="fas fa-phone"> </i>&emsp;<?php  echo $row['MobileNumber2'];?> </a>
-            <?php } ?> 
-        </div>
+            <a class="sus-btn" href="tel:<?php echo $row['MobileNumber2'] ;?>"> <i class="fas fa-phone"> </i>&emsp;<?php  echo $row['MobileNumber2'];?> </a>
+        <?php } ?> 
     </div>
 </div>
 </div>
+</div>
 </div><!-- End Suscribe Section -->
+<div style="background:#CCDCEC;
+    height: 50px;
+    color: #444;
+    padding: 11px;
+    font-weight: bold;
+    font-size: large;" >
+    
+    <marquee  behavior="scroll"  direction="left" >
+        <?php 
+
+            $ret=mysqli_query($con,"select * from notice ");
+            if ($row = $ret->fetch_assoc()) {
+                echo $row['notice'];
+            }
+        ?> 
+        
+
+    </marquee>
+
+    
+</div>
 <!-- about section starts  -->
 
 <section class="about" id="about">
     <div class="container">
-       
-    
+
+
         <div class="row">
-    
+
             <div class="image">
                 <img src="newassets/image/about-img.svg" alt="">
             </div>
-    
+
             <div class="content text-center ">
-                <p style="font-size: 20px;font-weight: 600;">take the world's best quality treatment</p>
+                <p style="font-size: 20px;font-weight: 600;">take the district's best quality treatment</p>
                 <?php
                 $ret=mysqli_query($con,"select * from tblpage where PageType='aboutus' ");
                 while ($row=mysqli_fetch_array($ret)) {
                     ?>
-    
-                    <!-- <p><?php  echo $row['PageDescription'];?>.</p> -->
-    
+
                     <p><?php  echo $row['PageDescription'];?> </p>
                 <?php } ?>
                 <!-- <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a> -->
             </div>
-    
+
         </div>
         
     </div>
 
-        
+
 
 </section>
+
+
 
 
 <section id="services" class="key-features department" style="margin-top: -50px">
@@ -192,92 +212,85 @@ if(isset($_POST['submit']))
 
         <div class="row">
             <!-- Existing key features -->
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6" >
                 <div class="single-key">
                     <i class="fas"><img src="assets/icon/icu.png" height="45px" width="45px" /></i>
                     <h5>CCU</h5>
-                    <p>Specialized care for heart-related issues.</p>
+                    <p style=" text-align: justify;">"A cardiac care unit (CCU) is a specialized hospital ward designed to treat people with serious or acute heart problems." <br>
+
+                    The CCU unit of Feni Medinova Hospital is equipped with world class Equipment, Specialist cardiac doctors and nurses. Which is able to cure a comatose patient quickly</p>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                     <i class="fas fa-heartbeat"></i>
                     <h5>HDU</h5>
-                    <p>Comprehensive orthopedic services for bone health.</p>
+                    <p style=" text-align: justify;">We have High Dependency Units (HDU), also called step-down, progressive and intermediate care units. HDUs are wards for people who need more intensive observation, treatment and nursing care than is possible in a general ward but slightly less than that given in intensive care.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-key">
+                     <i class="fa"><img src="assets/icon/monitor.png" height="45px" width="45px" /></i>
+                     <h5>NICU</h5>
+                     <p style=" text-align: justify;">NICU of Feni Medinova Hospital with maximum facilities including 360 degree phototherapy machine, state of the art CPAP machine.  It is being conducted under the direct supervision of a specialist doctor, comprising of skilled and experienced doctors, nurses and other staff.</p>
+                </div>
+            </div>
+             <div class="col-lg-4 col-md-6">
+                <div class="single-key">
+                    <i class="fas"><img src="assets/icon/dialysis.png" height="45px" width="45px" /></i>
+                    <h5>Dialysis</h5>
+                    <p style=" text-align: justify;">Two thin needles will be inserted into your AV fistula or graft and taped into place. One needle will slowly remove blood and transfer it to a machine called a dialyser or dialysis machine.
+                        a procedure to remove waste products and excess fluid from the blood when the kidneys stop working properly.  
+                    We have world class machines and expert team for kidney dialysis.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-key">
+                    <i class="fas fa-medkit"></i>
+                    <h5>MRI</h5>
+                    <p style=" text-align: justify;">MRI or Magnetic Resonance Imaging is the most modern diagnostic test is used to investigate or diagnose conditions that affect soft tissue, such as: Tumours, including cancer. We are the only one in Feni to provide MRI services with Modern and advanced technology SIEMENS Germany machines by skilled and trained technicians and reporting by expert radiologists.<br>
+
+ Contact: 01811-424667, 01676-244769</p>
+                </div>
+            </div>
+
+            <!-- Additional key features -->
+            <div class="col-lg-4 col-md-6">
+                <div class="single-key">
+                    <i class="fas fa-microscope"></i>
+                    <h5>Pathology</h5>
+                    <p style=" text-align: justify;">Pathology Laboratory is where tests are done on the clinical specimens from which information is found about the diseases or any health issues of the patient to aid in the diagnosis, treatment, and prevention of disease, We have advanced and modern technology automation machines, skilled and trained lab technologists and technicians.  100% reliability of reports</p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
-                 <i class="fa"><img src="assets/icon/monitor.png" height="45px" width="45px" /></i>
-                 <h5>NICU</h5>
-                 <p>Expert care for neurological disorders.</p>
-             </div>
-         </div>
-
-         <div class="col-lg-4 col-md-6">
-            <div class="single-key">
-                <!-- <i class="fas fa-pills"></i> -->
-                <i class="fas"><img src="assets/icon/dialysis.png" height="45px" width="45px" /></i>
-                <h5>Dialysis</h5>
-                <p>Innovative pharmaceutical developments.</p>
+                    <i class="fas fa-tooth"></i>
+                    <h5>Dental Unit</h5>
+                    <p style=" text-align: justify;">Medinova dental unit have necessary work tool of tooth. This dental unit consists of specific parts that include the dental chair, stool, lighting, hydric box, aspiration, cuspidor and other elements.Have thermal conductivity and expansion, We have expert Dentist and caring dental assistant. Those who are working efficiently in various dental care and tooth decay prevention.</p>
+                </div>
             </div>
-        </div>
 
-
-        <div class="col-lg-4 col-md-6">
-            <div class="single-key">
-                <i class="fas fa-medkit"></i>
-                <h5>MRI</h5>
-                <p>Providing top-notch medical treatments for your well-being.</p>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-key">
+                     <i class="fas fa-procedures"></i>
+                     <h5>OT</h5>
+                     <p style=" text-align: justify;">Our operating rooms are spacious, clean and well-lit, usually with overhead surgical lights, and consist of temperature-controlled operating tables and anesthesia carts with viewing screens and monitors.  Managed by skilled doctors, medical assistants, OT assistants and nurses.   All kinds of big and small operations are possible.</p>
+                </div>
             </div>
-        </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-key">
+                     <i class="fas fa-pills"></i>
 
-        <!-- Additional key features -->
-        <div class="col-lg-4 col-md-6">
-            <div class="single-key">
-                <i class="fas fa-microscope"></i>
-                <h5>Pathology</h5>
-                <p>Exploring genetic solutions for personalized healthcare.</p>
+                     <h5>Pharmacy</h5>
+                     <p style=" text-align: justify;">Medinova Drug House has Quality products at a reasonable price. Fast and quality service. Who wants to stand in a long line while waiting for more than 15 minutes just to fill up their prescription? .Knowledgeable and experienced pharmacist.Trained and knowledgeable staff: who are able to answer questions, provide guidance, and offer personalized care to customers.</p>
+                </div>
             </div>
+
+
+
         </div>
-
-        <div class="col-lg-4 col-md-6">
-            <div class="single-key">
-                <i class="fas fa-tooth"></i>
-                <h5>Dental Unit</h5>
-                <p>Comprehensive dental care for a healthy smile.</p>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-            <div class="single-key">
-             <i class="fas fa-procedures"></i>
-             <h5>OT</h5>
-             <p>Advancing healthcare through cutting-edge research.</p>
-         </div>
-     </div>
-
-     <div class="col-lg-4 col-md-6">
-        <div class="single-key">
-         <i class="fas fa-vial"></i>
-         <h5>Digital LAB</h5>
-         <p>Advancing healthcare through cutting-edge research.</p>
-     </div>
- </div>
- 
-</div>
-<div class="col-lg-4 col-md-6">
-    <div class="single-key">
-     <i class="fas fa-pills"></i>
-
-     <h5>Pharmacy</h5>
-     <p>Advancing healthcare through cutting-edge research.</p>
- </div>
-</div>
-</div>
-</div>
+    </div>
 </section>
 
 
@@ -303,7 +316,7 @@ if(isset($_POST['submit']))
 
             ?>
             <div class="box">
-                
+
                 <img src="<?php echo "./admin/".$fetch['img']; ?>" alt="<?php echo htmlentities($fetch['doctorName']); ?>" style="width: 180px; height: 180px;">
                 <h3><?php echo $fetch['doctorName']?></h3>
                 <span><?php echo $fetch['specilization']?></span><br><br>
@@ -355,8 +368,8 @@ if(isset($_POST['submit']))
 
 
             <h3>make appointment</h3>
-            <input type="text"name="fullname" placeholder="Patient name" class="box" required>
-            <input type="text"name="mobileno" placeholder="Patient number" class="box" required>
+            <input type="text"name="fullname" placeholder="Patient Name" class="box" required>
+            <input type="text"name="mobileno" placeholder="Patient Phone Number" class="box" required>
             <select  name="Doctorspecialization" id="Doctorspecialization" class="box" required>
                 <option value="">Select Specialization</option>
                 <?php $ret=mysqli_query($con,"select * from doctorspecilization");
@@ -374,7 +387,7 @@ if(isset($_POST['submit']))
                 <option value="">Select Doctor</option>
             </select>
             <input type="date"name="appdate"  class="box">
-            <textarea rows="2" id="description" placeholder="Enter Your Message Or Additional Information" class="box" name="description" required="" ></textarea>
+            
             <input type="submit" name="submit" value="appointment now" class="btn">
         </form>
 
@@ -388,171 +401,27 @@ if(isset($_POST['submit']))
 
 
 
-    
-    
-    <!--  ************************* Gallery Starts Here ************************** -->
-    <div class="photo-gallery" >
-        <div class="container center">
-            <h1 class="heading py-5">Our <span>Gallery</span>  </h1>   
-            <div class="row photos">
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_01.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_01.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_02.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_02.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_03.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_03.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_04.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_04.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_05.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_05.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_06.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_06.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_08.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_08.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_09.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_09.jpg"></a></div>
-                <div class="col-sm-4 col-md-4  item"><a href="assets/images/gallery/gallery_10.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/images/gallery/gallery_07.jpg"></a></div>
-            </div>
+
+
+<!--  ************************* Gallery Starts Here ************************** -->
+<div class="photo-gallery" >
+    <div class="container center">
+        <h1 class="heading py-5">Our <span>Gallery</span>  </h1>   
+        <div class="row photos">
+            <?php 
+            $gallerycontent=mysqli_query($con,"select * from gallery");
+            while ($row=mysqli_fetch_array($gallerycontent)) {
+                ?>
+                <div class="col-sm-4 col-md-4  item"><a href="<?php echo $row['image'] ?>" data-lightbox="photos"><img class="img-fluid" src="<?php echo $row['image'] ?>"></a></div>
+            <?php }; ?>   
         </div>
     </div>
-
-    <!-- ######## Gallery End ####### -->
-    <!--  ************************* Contact Us Starts Here ************************** -->
-<!--      <style>
-    #contact_us {
-        background-color: #f8f8f8;
-        padding: 50px 0;
-    }
-
-    .contact-us-single {
-        text-align: center;
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    .cop-ck {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 12px;
-        margin: 12px 0;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    h2 {
-        color: #333;
-        font-weight: bold;
-        margin-bottom: 20px;
-        font-size: 28px;
-    }
-
-    label {
-        font-weight: bold;
-        margin-bottom: 10px;
-        display: block;
-        font-size: 16px;
-    }
-
-    textarea {
-        width: 100%;
-        padding: 12px;
-        margin: 12px 0;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        resize: vertical;
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    button {
-        background-color: #28a745;
-        color: #fff;
-        padding: 15px 30px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    button:hover {
-        background-color: #218838;
-    }
-</style>
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-
-<section id="contact_us" class="contact-us-single">
-    <div class="row no-margin">
-        <div class="col-sm-12 cop-ck">
-            <form method="post" id="contactForm">
-                <h2>Contact Form</h2>
-                <div class="row cf-ro">
-                    <div class="col-sm-3"><label for="fullname">Enter Name:</label></div>
-                    <div class="col-sm-8"><input type="text" id="fullname" placeholder="Enter Name" name="fullname" class="form-control input-sm" required></div>
-                </div>
-                <div class="row cf-ro">
-                    <div class="col-sm-3"><label for="emailid">Email Address:</label></div>
-                    <div class="col-sm-8"><input type="email" id="emailid" name="emailid" placeholder="Enter Email Address" class="form-control input-sm" required></div>
-                </div>
-                <div class="row cf-ro">
-                    <div class="col-sm-3"><label for="mobileno">Mobile Number:</label></div>
-                    <div class="col-sm-8"><input type="tel" id="mobileno" name="mobileno" placeholder="Enter Mobile Number" class="form-control input-sm" required></div>
-                </div>
-                <div class="row cf-ro">
-                    <div class="col-sm-3"><label for="description">Enter Message:</label></div>
-                    <div class="col-sm-8">
-                        <textarea rows="5" id="description" placeholder="Enter Your Message" class="form-control input-sm" name="description" required></textarea>
-                    </div>
-                </div>
-                <div class="row cf-ro">
-                    <div class="col-sm-3"><label></label></div>
-                    <div class="col-sm-8">
-                        <button class="btn btn-success btn-sm" type="submit" name="submit">Send Message</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</section> -->
-<!-- ################# Footer Starts Here#######################--->
-<!--     <footer class="footer">
-        <div class="container">
-            <div class="row">
-       
-                <div class="col-md-6 col-sm-12">
-    <h2 style="color: white; font-family: 'Times New Roman', Times, serif;">Useful Links</h2>
-    <ul class="list-unstyled link-list">
-        <li><a ui-sref="about" href="#about_us">About us</a><i class="fa fa-angle-right"></i></li>
-        <li><a ui-sref="portfolio" href="#services">Services</a><i class="fa fa-angle-right"></i></li>
-        <li><a ui-sref="products" href="#logins">Logins</a><i class="fa fa-angle-right"></i></li>
-        <li><a ui-sref="gallery" href="#gallery">Gallery</a><i class="fa fa-angle-right"></i></li>
-        <li><a ui-sref="contact" href="#contact">Contact us</a><i class="fa fa-angle-right"></i></li>
-    </ul>
 </div>
-                <div class="col-md-6 col-sm-12 map-img">
-                    <h2 style="font-family: 'Times New Roman', Times, serif; color: white; text-decoration: underline;"><b>Contact Us</b></h2>
-					<address class="md-margin-bottom-40">
 
-<?php
-// $ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
-// while ($row=mysqli_fetch_array($ret)) {
-?>
-                        <?php  //echo $row['PageDescription'];?> <br>
-                        Phone: <?php  //echo $row['MobileNumber'];?> <br>
-                        Email: <a href="mailto:<?php  //echo $row['Email'];?>" class=""><?php  //echo $row['Email'];?></a><br>
-                        Timing: <?php  //echo $row['OpenningTime'];?>
-                    </address>
-         <?php //} ?> 
-               </div>
-            </div>
-        </div>        
-    </footer>
-   <div class="copy" style="text-align: right; font-family: 'Times New Roman', Times, serif;">
-    <div class="container">
-       <b> Hospital Management System | It's Me </b>            
-    </div>
-</div>
---> 
+
+
+<!-- ######## Gallery End ####### -->
+
 
 <!-- footer section starts  -->
 
@@ -602,12 +471,12 @@ if(isset($_POST['submit']))
         </div>
 
         <div class="box">
-            
+
             <h3>Location on google Maps</h3>
             
-                 <!-- Start Map -->
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.3824208759365!2d91.39127457350703!3d23.00972681681084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753683a8b8555d5%3A0xf5751b9b06225e07!2sFeni%20Medinova%20Specialized%20Hospital!5e0!3m2!1sen!2sbd!4v1718002782254!5m2!1sen!2sbd" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <!-- End Map -->
+            <!-- Start Map -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.3824208759365!2d91.39127457350703!3d23.00972681681084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3753683a8b8555d5%3A0xf5751b9b06225e07!2sFeni%20Medinova%20Specialized%20Hospital!5e0!3m2!1sen!2sbd!4v1718002782254!5m2!1sen!2sbd" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- End Map -->
             
         </div>
 
@@ -617,7 +486,7 @@ if(isset($_POST['submit']))
      Feni Medinova Specialized Hospital | all rights reserved .<br>
 
      <h5>developed by <span><a href="https://www.facebook.com/jahed.hasann" target="_blank">JAHED HASAN</a></span></h5>
-    </div>
+ </div>
 
 </section>
 <!-- footer section ends -->
