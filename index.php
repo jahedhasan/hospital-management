@@ -75,7 +75,6 @@ if(isset($_POST['submit']))
         <a href="#services">Department</a>
         <a href="#doctors">doctors</a>
         <a href="#appointment">appointment</a>
-        <a href="./admin">login</a>
     </nav>
 
     <div id="menu-btn" class="fas fa-bars"></div>
@@ -215,7 +214,7 @@ if(isset($_POST['submit']))
             <div class="col-lg-4 col-md-6" >
                 <div class="single-key">
                     <i class="fas"><img src="assets/icon/icu.png" height="45px" width="45px" /></i>
-                    <h5>CCU</h5>
+                    <h2>CCU</h2>
                     <p style=" text-align: justify;">"A cardiac care unit (CCU) is a specialized hospital ward designed to treat people with serious or acute heart problems." <br>
 
                     The CCU unit of Feni Medinova Hospital is equipped with world class Equipment, Specialist cardiac doctors and nurses. Which is able to cure a comatose patient quickly</p>
@@ -224,21 +223,21 @@ if(isset($_POST['submit']))
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                     <i class="fas fa-heartbeat"></i>
-                    <h5>HDU</h5>
+                    <h2>HDU</h2>
                     <p style=" text-align: justify;">We have High Dependency Units (HDU), also called step-down, progressive and intermediate care units. HDUs are wards for people who need more intensive observation, treatment and nursing care than is possible in a general ward but slightly less than that given in intensive care.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                      <i class="fa"><img src="assets/icon/monitor.png" height="45px" width="45px" /></i>
-                     <h5>NICU</h5>
+                     <h2>NICU</h2>
                      <p style=" text-align: justify;">NICU of Feni Medinova Hospital with maximum facilities including 360 degree phototherapy machine, state of the art CPAP machine.  It is being conducted under the direct supervision of a specialist doctor, comprising of skilled and experienced doctors, nurses and other staff.</p>
                 </div>
             </div>
              <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                     <i class="fas"><img src="assets/icon/dialysis.png" height="45px" width="45px" /></i>
-                    <h5>Dialysis</h5>
+                    <h2>Dialysis</h2>
                     <p style=" text-align: justify;">Two thin needles will be inserted into your AV fistula or graft and taped into place. One needle will slowly remove blood and transfer it to a machine called a dialyser or dialysis machine.
                         a procedure to remove waste products and excess fluid from the blood when the kidneys stop working properly.  
                     We have world class machines and expert team for kidney dialysis.</p>
@@ -247,7 +246,7 @@ if(isset($_POST['submit']))
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                     <i class="fas fa-medkit"></i>
-                    <h5>MRI</h5>
+                    <h2>MRI</h2>
                     <p style=" text-align: justify;">MRI or Magnetic Resonance Imaging is the most modern diagnostic test is used to investigate or diagnose conditions that affect soft tissue, such as: Tumours, including cancer. We are the only one in Feni to provide MRI services with Modern and advanced technology SIEMENS Germany machines by skilled and trained technicians and reporting by expert radiologists.<br>
 
  Contact: 01811-424667, 01676-244769</p>
@@ -258,7 +257,7 @@ if(isset($_POST['submit']))
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                     <i class="fas fa-microscope"></i>
-                    <h5>Pathology</h5>
+                    <h2>Pathology</h2>
                     <p style=" text-align: justify;">Pathology Laboratory is where tests are done on the clinical specimens from which information is found about the diseases or any health issues of the patient to aid in the diagnosis, treatment, and prevention of disease, We have advanced and modern technology automation machines, skilled and trained lab technologists and technicians.  100% reliability of reports</p>
                 </div>
             </div>
@@ -266,7 +265,7 @@ if(isset($_POST['submit']))
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                     <i class="fas fa-tooth"></i>
-                    <h5>Dental Unit</h5>
+                    <h2>Dental Unit</h2>
                     <p style=" text-align: justify;">Medinova dental unit have necessary work tool of tooth. This dental unit consists of specific parts that include the dental chair, stool, lighting, hydric box, aspiration, cuspidor and other elements.Have thermal conductivity and expansion, We have expert Dentist and caring dental assistant. Those who are working efficiently in various dental care and tooth decay prevention.</p>
                 </div>
             </div>
@@ -274,7 +273,7 @@ if(isset($_POST['submit']))
             <div class="col-lg-4 col-md-6">
                 <div class="single-key">
                      <i class="fas fa-procedures"></i>
-                     <h5>OT</h5>
+                     <h2>OT</h2>
                      <p style=" text-align: justify;">Our operating rooms are spacious, clean and well-lit, usually with overhead surgical lights, and consist of temperature-controlled operating tables and anesthesia carts with viewing screens and monitors.  Managed by skilled doctors, medical assistants, OT assistants and nurses.   All kinds of big and small operations are possible.</p>
                 </div>
             </div>
@@ -282,7 +281,7 @@ if(isset($_POST['submit']))
                 <div class="single-key">
                      <i class="fas fa-pills"></i>
 
-                     <h5>Pharmacy</h5>
+                     <h2>Pharmacy</h2>
                      <p style=" text-align: justify;">Medinova Drug House has Quality products at a reasonable price. Fast and quality service. Who wants to stand in a long line while waiting for more than 15 minutes just to fill up their prescription? .Knowledgeable and experienced pharmacist.Trained and knowledgeable staff: who are able to answer questions, provide guidance, and offer personalized care to customers.</p>
                 </div>
             </div>

@@ -2,16 +2,17 @@
 session_start();
 error_reporting(0);
 include('include/config.php');
-if(strlen($_SESSION['id']) == 0) {
+if(strlen($_SESSION['id']==0) || !isset($_SESSION['login']) || !in_array($_SESSION['role'], ['admin', 'staff'])) {
 	header('location:logout.php');
 } else{
-
+	// Check for user role, assuming 'admin' and 'staff' as roles
+    $userRole = $_SESSION['role'];
 
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
-		<title>Admin  | Dashboard</title>
+		<title><?php if($userRole == 'admin'){ echo "Admin";} else { echo "Staff";} ?>| Dashboard</title>
 		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="icon" type="image/x-icon" href="../assets/favicon/favicon-16x16.png">
@@ -45,11 +46,11 @@ if(strlen($_SESSION['id']) == 0) {
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle">Admin | Dashboard</h1>
+									<h1 class="mainTitle"><?php if($userRole == 'admin'){ echo "Admin";} else { echo "Staff";} ?> | Dashboard</h1>
 								</div>
 								<ol class="breadcrumb">
 									<li>
-										<span>Admin</span>
+										<span><?php if($userRole == 'admin'){ echo "Admin";} else { echo "Staff";} ?></span>
 									</li>
 									<li class="active">
 										<span>Dashboard</span>
@@ -61,7 +62,8 @@ if(strlen($_SESSION['id']) == 0) {
 						<!-- start: BASIC EXAMPLE -->
 						<div class="container-fluid container-fullw bg-white">
 							<div class="row">
-								
+								<?php if ($userRole == 'admin') { ?>
+                                    <!-- Admin Only Section: Manage Doctors -->
 									<div class="col-sm-4">
 										<div class="panel panel-white no-radius text-center">
 											<div class="panel-body">
@@ -81,7 +83,7 @@ if(strlen($_SESSION['id']) == 0) {
 												</div>
 											</div>
 										</div>
-							
+								<?php } ?>
 
 
 

@@ -1,28 +1,32 @@
 <?php
 session_start();
 error_reporting(0);
+
 include("include/config.php");
-if(isset($_POST['submit']))
-{
-$uname=$_POST['username'];
-$upassword=md5($_POST['password']);
 
-$ret=mysqli_query($con,"SELECT * FROM admin WHERE username='$uname' and password='$upassword'");
-$num=mysqli_fetch_array($ret);
-if($num>0)
-{
-$_SESSION['login']=$_POST['username'];
-$_SESSION['id']=$num['id'];
-header("location:dashboard.php");
+if (isset($_POST['submit'])) {
+    $uname = $_POST['username'];
+    $upassword = md5($_POST['password']);
 
-}
-else
-{
-$_SESSION['errmsg']="Invalid username or password";
+    // Fetch username, password, and role
+    $ret = mysqli_query($con, "SELECT * FROM admin WHERE username='$uname' AND password='$upassword'");
+    $num = mysqli_fetch_array($ret);
+    
+    if ($num > 0) {
+        $_SESSION['login'] = $_POST['username'];
+        $_SESSION['id'] = $num['id'];
+        $_SESSION['role'] = $num['role'];  // Store the role in the session
 
+        
+            header("Location: dashboard.php");  
+    } else {
+        $_SESSION['errmsg'] = "Invalid username or password";
+    }
 }
-}
+
+
 ?>
+
 
 
 <!DOCTYPE html>

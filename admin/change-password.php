@@ -2,10 +2,11 @@
 session_start();
 //error_reporting(0);
 include('include/config.php');
-if(strlen($_SESSION['id']==0)) {
+if(strlen($_SESSION['id']==0) || !isset($_SESSION['login']) || !in_array($_SESSION['role'], ['admin', 'staff'])) {
 	header('location:logout.php');
 } else{
-
+// Check for user role, assuming 'admin' and 'staff' as roles
+    $userRole = $_SESSION['role'];
 date_default_timezone_set('Asia/Dhaka');// change according timezone
 $currentTime = date( 'd-m-Y h:i:s A', time () );
 if(isset($_POST['submit']))
@@ -29,7 +30,7 @@ if(isset($_POST['submit']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Admin | change Password</title>
+	<title><?php if($userRole == 'admin'){ echo "Admin";} else { echo "Staff";} ?> | change Password</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -100,11 +101,11 @@ if(isset($_POST['submit']))
 				<section id="page-title">
 					<div class="row">
 						<div class="col-sm-8">
-							<h1 class="mainTitle">Admin | Change Password</h1>
+							<h1 class="mainTitle"><?php if($userRole == 'admin'){ echo "Admin";} else { echo "Staff";} ?> | Change Password</h1>
 						</div>
 						<ol class="breadcrumb">
 							<li>
-								<span>Admin</span>
+								<span><?php if($userRole == 'admin'){ echo "Admin";} else { echo "Staff";} ?></span>
 							</li>
 							<li class="active">
 								<span>Change Password</span>

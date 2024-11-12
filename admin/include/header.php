@@ -30,9 +30,11 @@
 								<a href class="dropdown-toggle" data-toggle="dropdown">
 									<img src="assets/images/images.jpg" > <span class="username">
 
+										<?php
+											$userRole = $_SESSION['role'];
+										 if($userRole == 'admin'){ echo "Admin";} else { echo "Staff IT";} 
+										 ?>
 
-
-										Admin
 									<i class="ti-angle-down"></i></i></span>
 								</a>
 								<ul class="dropdown-menu dropdown-dark">

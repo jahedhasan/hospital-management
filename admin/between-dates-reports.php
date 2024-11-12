@@ -2,15 +2,17 @@
 session_start();
 error_reporting(0);
 include('include/config.php');
-if(strlen($_SESSION['id']==0)) {
+if(strlen($_SESSION['id']==0) || !isset($_SESSION['login']) || !in_array($_SESSION['role'], ['admin', 'staff'])) {
  header('location:logout.php');
   } else{
+  	// Check for user role, assuming 'admin' and 'staff' as roles
+    $userRole = $_SESSION['role'];
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>B/w dates reports | Admin</title>
+		<title>B/w dates reports | <?php if($userRole == 'admin'){ echo "Admin";} else { echo "Staff";} ?></title>
 		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">

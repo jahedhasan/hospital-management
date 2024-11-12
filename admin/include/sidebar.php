@@ -1,3 +1,4 @@
+<?php $userRole = $_SESSION['role']; ?>
 <div class="sidebar app-aside" id="sidebar">
 	<div class="sidebar-container perfect-scrollbar">
 
@@ -20,6 +21,7 @@
 						</div>
 					</a>
 				</li>
+				<?php if ($userRole == 'admin') { ?>
 				<li>
 					<a href="notice.php">
 						<div class="item-content">
@@ -62,7 +64,7 @@
 
 					</ul>
 				</li>
-
+				<?php } ?>
 
 				<li>
 					<a href="javascript:void(0)">
@@ -96,6 +98,7 @@
 
 				
 				<!--- Pages---->
+				<?php if ($userRole == 'admin') { ?>
 				<li>
 					<a href="javascript:void(0)">
 						<div class="item-content">
@@ -132,7 +135,7 @@
 					</ul>
 				</li>
 
-
+				<?php } ?>
 
 
 				<li>

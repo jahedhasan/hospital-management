@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('include/config.php');
-if(strlen($_SESSION['id']==0)) {
+if(strlen($_SESSION['id']==0) || $_SESSION['role'] != 'admin') {
 	header('location:logout.php');
 } else{
 
